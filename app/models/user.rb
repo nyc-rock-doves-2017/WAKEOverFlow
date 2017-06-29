@@ -7,8 +7,8 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :password_hash, presence: true
-
-  validate :password_validation
+  # Comment out when seeding
+  # validate :password_validation
 
   def password
     @password ||= BCrypt::Password.new(password_hash)
@@ -19,11 +19,12 @@ class User < ApplicationRecord
     self.password_hash = @password
   end
 
-  def password_validation
-    if self.password_hash.length <= BCrypt::Password.create(nil).length
-      errors.add(:password_validation, "password cannot be blank")
-    end
-  end
+  # Comment out when seeding
+  # def password_validation
+  #   if @password <= BCrypt::Password.create(nil).length
+  #     errors.add(:password_validation, "password cannot be blank")
+  #   end
+  # end
 
 end
 
