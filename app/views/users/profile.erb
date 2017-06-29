@@ -1,0 +1,9 @@
+<div>
+  Your questions activity:
+</div>
+
+<% @questions.each do |question| %>
+  <span><a href="/questions/<%= question.id %>">
+  <%= erb :'partials/_voteable', locals: {voteable: @questions} %></a>
+</span>
+<% end %>
