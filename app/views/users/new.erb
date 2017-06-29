@@ -13,7 +13,7 @@
   <div>
     <label>Password</label>
     <input type='password' name='user_information[password]'>
-    <%=@new_user.errors.messages[:password].join(" | ")%>
+    <%=@new_user.errors.messages[:password_validation].join(" | ")%>
   </div>
-  <input type='submit'/>
+  <input type='submit' value='Sign up!'>
 </form>
