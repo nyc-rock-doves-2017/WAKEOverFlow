@@ -5,7 +5,6 @@ end
 
 
 post '/users' do
-  p "*"*100
   @new_user = User.new(params[:user_information])
   if @new_user.valid?
     create_user
