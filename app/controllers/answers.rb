@@ -10,27 +10,32 @@ get 'questions/:id/answers/new' do
 end
 
 post '/questions/:id/answers/new' do
-  answer = Answer.create(params[:answer])
-  redirect '/questions/#{params[:answer][:question_id]}'
+  answer = Answer.create(user_id: session[:id], question_id: params[:id], content: params[:answer][:content])
+  redirect "/questions/#{params[:id]}"
 end
 
-get '/questions/:id/answers/:id' do
-  @question = Question.find_by(id: params[:id])
+get '/answers/:id/edit' do
   @answer = Answer.find_by(id: params[:id])
-  # may need
-  erb :'voteable/answers/show'
+  erb :'answers/edit'
 end
 
-patch '/questions/:id/answers/:id' do
-  update_answer
+patch '/answers/:id' do
+  @answer = Answer.find_by(id: params[:id])
+  @answer.content = params[:answer][:content]
+  @answer.save
+  redirect "/questions/#{@answer.question_id}"
 end
 
-put '/questions/:id/answers/:id' do
-  update_answer
+put '/answers/:id' do
+  @answer = Answer.find_by(id: params[:id])
+  @answer.content = params[:answer][:content]
+  @answer.save
+  redirect "/questions/#{@answer.question_id}"
 end
 
-delete '/questions/:id/answers/:id' do
-  Answer.find_by(id: params[:id]).destroy
-  redirect '/questions/:id'
+delete '/answers/:id' do
+  answer = Answer.find_by(id: params[:id])
+  Answer.destroy(params[:id])
+  redirect "/questions/#{answer.question_id}"
   # this redirect needs to be updated
 end

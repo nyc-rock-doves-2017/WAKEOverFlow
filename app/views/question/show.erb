@@ -1,10 +1,19 @@
 <div>
   <h1> <%= erb(:'partials/_voteable', layout: false,  locals: {voteable: @question}) %> </h1>
+  <% if mine?(@question) %>
+    <%= erb(:'partials/_buttons', layout: false,  locals: {editable: @question, type: @question.type_of} ) %>
+  <% end %>
     <div><%= erb(:'partials/_commentables', layout: false,  locals: {commentables: @question.comments}) %></div>
 </div>
 <div>
   <% @answers.each do |answer| %>
       <h2><%= erb(:'partials/_voteable', layout: false,  locals: {voteable: answer}) %></h2>
+      <% if mine?(answer) %>
+        <%= erb(:'partials/_buttons', layout: false,  locals: {editable: answer, type: answer.type_of} ) %>
+      <% end %>
       <div><%= erb(:'partials/_commentables', layout: false,  locals: {commentables: answer.comments}) %></div>
   <% end %>
+</div>
+<div>
+  <%= erb(:'partials/_answerquestion', layout: false, locals: {question: @question}) %>
 </div>
