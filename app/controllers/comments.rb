@@ -4,11 +4,16 @@ end
 
 get '/comments/new' do
   # "Makes new comments"
-  erb :'/comments'
+  erb :'/comments/new'
 end
 
 post '/comments' do
-  redirect '/comments'
+  # @comment = Comment.new(params[:comment])
+  #   if @comment.save
+  #   redirect '/comments'
+  #   else
+  #     puts "Please enter a legitimate comment"
+  #   end
 end
 
 get '/comments/:id' do
