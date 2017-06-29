@@ -8,7 +8,7 @@ helpers do
    @user = User.find_by(email: params[:user_information][:email])
    if @user && @user.password == params[:user_information][:password]
       session[:id] = @user.id
-      redirect '/account'
+      redirect '/'
    else
      # make an error message here
       redirect '/sessions/new'
