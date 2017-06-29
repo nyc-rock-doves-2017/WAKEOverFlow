@@ -1,21 +1,20 @@
 get '/comments' do
-  "displays all comments"
   @comments = Comment.all
   erb :'/comments/index'
 end
 
 get '/comments/new' do
-  # "Makes new comments"
   erb :'/comments/new'
 end
 
 post '/comments' do
-  # @comment = Comment.new(params[:comment])
-  #   if @comment.save
-  #   redirect '/comments'
-  #   else
-  #     erb :'/comments/new'
-  #   end
+@comment = Comment.new(params[:comment])
+  if @comment.save
+    redirect '/comments'
+  else
+    @comment.errors.full_messages
+    erb :'comments/new'
+  end
 end
 
 get '/comments/:id' do
