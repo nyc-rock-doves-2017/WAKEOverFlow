@@ -26,3 +26,9 @@ class User < ApplicationRecord
   end
 
 end
+
+=begin
+  Notes
+  1) rubyonrails.org on 'Custom Methods':
+  http://guides.rubyonrails.org/active_record_validations.html#custom-validators
+=end
