@@ -1,0 +1,10 @@
+<div>
+  <h1>Answer</h1>
+  <form method="POST" action="/answers/<%= @answer.id %>">
+      <input type="hidden" name="_method" value="patch">
+      <textarea name="answer[content]" rows="4" cols="50"><%= @answer.content %></textarea>
+      <div>
+        <input type="submit" value="Update">
+      </div>
+  </form>
+</div>

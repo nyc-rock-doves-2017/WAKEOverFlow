@@ -1,0 +1,11 @@
+<div>
+  <ul>
+    <li>
+      <form action="/<%= type %>/<%= editable.id %>" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" value="delete">
+      </form>
+  </li>
+  <li> <a href="/<%= type %>/<%= editable.id %>/edit">edit</a>
+  </ul>
+<div>

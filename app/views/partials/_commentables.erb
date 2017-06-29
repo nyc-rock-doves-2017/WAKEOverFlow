@@ -1,0 +1,9 @@
+<ul>
+  <% commentables.each do |comment| %>
+    <li><span><%= erb(:'partials/_voteable', layout: false,  locals: {voteable: comment}) %> </span></li>
+    <% if mine?(comment) %>
+      <%= erb(:'partials/_buttons', layout: false,  locals: {editable: comment, type: comment.type_of} ) %>
+    <% end %>
+  <% end %>
+
+</ul>

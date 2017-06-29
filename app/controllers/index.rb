@@ -8,5 +8,5 @@ before :method => :get do
 end
 
 get '/' do
-  redirect '/questions/all'
+  redirect '/questions'
 end

@@ -1,7 +1,7 @@
 <nav>
   <ul>
     <% if logged_in? %>
-      <li ><a href='/account'><%= @user.first_name + " " + @user.last_name %></a></li>
+      <li ><a href='/account'><%= @user.username %></a></li>
       <li ><a href='/users/logout'>Log out</a></li>
       <li ><a href='/'>Home page</a></li>
     <% else %>
