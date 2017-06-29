@@ -22,4 +22,5 @@ helpers do
      @user ||= User.find(session[:id])
    end
  end
+
 end
