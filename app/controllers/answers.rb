@@ -1,7 +1,7 @@
-get '/answers' do
-  @voteables = Answer.all
-  erb :'voteables/index'
-end
+# get 'questions/:id/answers' do
+#   @voteables = Answer.all
+#   erb :'voteables/index'
+# end
 
 get 'questions/:id/answers/new' do
   @question = Question.find_by(id: params[:id])
@@ -11,13 +11,13 @@ end
 
 post '/questions/:id/answers/new' do
   answer = Answer.create(params[:answer])
-  redirect '/questions/#{params[:answer][:question_id]}/answers/#{params[:answer][:answer_id]}'
+  redirect '/questions/#{params[:answer][:question_id]}'
 end
 
 get '/questions/:id/answers/:id' do
   @question = Question.find_by(id: params[:id])
   @answer = Answer.find_by(id: params[:id])
-  # may need 
+  # may need
   erb :'voteable/answers/show'
 end
 
