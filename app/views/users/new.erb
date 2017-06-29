@@ -1,0 +1,19 @@
+<h1>New User</h1>
+<form action='/users' method='post'>
+  <div>
+    <label>Username</label>
+    <input type='text' name='user_information[username]' value=<%=@new_user.username%>>
+    <%= @new_user.errors.messages[:username].join(" and ")%>
+  </div>
+  <div>
+    <label>Email</label>
+    <input type='email' name='user_information[email]' value=<%=@new_user.email%>>
+    <%= @new_user.errors.messages[:email].join(" and ")%>
+  </div>
+  <div>
+    <label>Password</label>
+    <input type='password' name='user_information[password]'>
+    <%= @new_user.errors.messages[:password_validation].join(" and ")%>
+  </div>
+  <input type='submit' value='Sign up!'>
+</form>
