@@ -8,7 +8,7 @@ post '/sessions/login' do
 end
 
 
-get '/sessions/logout' do
+get '/logout' do
   session.clear
   redirect '/sessions/new'
 end
