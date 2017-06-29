@@ -19,6 +19,7 @@ get '/comments/new' do
 end
 
 post '/comments' do
+  redirect '/comments'
 end
 
 get '/comments/:id' do
