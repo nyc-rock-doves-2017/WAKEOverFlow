@@ -1,0 +1,5 @@
+<ul>
+  <% commentables.each do |comment| %>
+    <li><span><%= erb(:'partials/_voteable', layout: false,  locals: {voteable: comment}) %> </span></li>
+  <% end %>
+</ul>
