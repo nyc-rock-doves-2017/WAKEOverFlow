@@ -4,8 +4,54 @@ class User < ApplicationRecord
   has_many :comments
   has_many :votes
 
-  def password=(string)
-    self.password_hash = string
-    # Replace with BCrypt Methods
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  include BCrypt
+
+  def password
+    @password ||= Password.new(password_hash)
+  end
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.password_hash = @password
   end
 end

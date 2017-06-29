@@ -1,0 +1,4 @@
+
+  <% @voteables.each do |voteable| %>
+    <span><a href="/questions/<%= voteable.id %>"><%= erb(:'partials/_voteable', layout: false,  locals: {voteable: @voteable}) %></a></span>
+  <% end %>
