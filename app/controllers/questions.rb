@@ -5,6 +5,14 @@ get '/questions' do
   erb :'question/index'
 end
 
+post '/questions/:id/vote/new' do
+  question = Question.find_by(id: params[:id])
+  find_user
+  score = (Vote.where(user: @user, voteable: question).sum(:score))+params[:score].to_i
+  score <= 1 && score >= -1 ? (Vote.create(voteable: question, user: @user, score: params[:score])) : ()
+  redirect "/questions/#{question.id}"
+end
+
 get '/questions/:id/edit' do
   @question = Question.find_by(id: params[:id])
   erb :'question/edit'

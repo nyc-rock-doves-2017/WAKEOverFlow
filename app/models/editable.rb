@@ -10,4 +10,12 @@ module Editable
       "comments"
     end
   end
+
+  def question?
+    self.class == Question
+  end
+
+
+
+
 end

@@ -1,3 +1,18 @@
-
-  <span><%= voteable.content %></span>
-  <span> <%= voteable.votes.sum(:score)%></span>
+<span>
+  <% if voteable.question? %>
+    <%= voteable.content_url %>
+  <% else %>
+    <%= voteable.content %>
+  <% end %>
+</span>
+<span> <%= voteable.votes.sum(:score)%></span>
+<span>
+  <form action="/<%= voteable.type_of %>/<%= voteable.id %>/vote/new" method="post">
+    <input type="hidden" name="score" value="1" />
+    <input type="submit" value="Upvote">
+  </form>
+  <form action="/<%= voteable.type_of %>/<%= voteable.id %>/vote/new" method="post">
+    <input type="hidden" name="score" value="-1" />
+    <input type="submit" value="Downvote">
+  </form>
+<span>

@@ -1,6 +1,6 @@
 <ul>
   <% @voteables.each do |voteable| %>
-    <li><span><a href="/questions/<%= voteable.id %>"><%= erb(:'partials/_voteable', layout: false,  locals: {voteable: voteable}) %></a></span>
+    <li><span><%= erb(:'partials/_voteable', layout: false,  locals: {voteable: voteable}) %></span>
       <% if mine?(voteable) %>
         <%= erb(:'partials/_buttons', layout: false,  locals: {editable: voteable, type: voteable.type_of} ) %>
       <% end %>

@@ -6,4 +6,11 @@ class Question < ApplicationRecord
   belongs_to :user
   has_many :answers
   validates :content, presence: true
+
+
+  def content_url
+    <<-url
+      <a href="/questions/#{self.id}"> #{self.content} </a>
+    url
+  end
 end
