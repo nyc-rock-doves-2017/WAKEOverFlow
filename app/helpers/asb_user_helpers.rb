@@ -5,7 +5,7 @@ helpers do
    @user.save!
  end
  def login
-   @user = User.find_by(email: params[:user_information][:email])
+   @user = User.find_by(username: params[:user_information][:username])
    if @user && @user.password == params[:user_information][:password]
       session[:id] = @user.id
       redirect '/'

@@ -1,0 +1,24 @@
+<div>Your questions activity:</div>
+
+
+<% @questions.each do |question| %>
+  <div><a href="/questions/<%= question.id %>">
+  <%= erb(:'partials/_voteable', layout: false,  locals: {voteable: question}) %>
+  </a></div>
+<% end %>
+
+<div>Your answers activity:</div>
+
+<% @answers.each do |answer| %>
+  <div><a href="/answers/<%= answer.id %>">
+  <%= erb(:'partials/_voteable', layout: false,  locals: {voteable: answer}) %>
+  </a></div>
+<% end %>
+
+<div>Your comments activity:</div>
+
+<% @commments.each do |commment| %>
+  <div><a href="/comments/<%= commment.id %>">
+  <%= erb(:'partials/_voteable', layout: false,  locals: {voteable: commment}) %>
+  </a></div>
+<% end %>
