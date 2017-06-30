@@ -32,12 +32,12 @@ helpers do
     if session[:sort_id].to_i == 1
       out = Question.all
     elsif session[:sort_id].to_i  == 2
-      out = Question.order(updated_at: :desc)
-    elsif session[:sort_id].to_i  == 3
       out = Question.order(updated_at: :asc)
+    elsif session[:sort_id].to_i  == 3
+      out = Question.order(updated_at: :desc)
     elsif session[:sort_id].to_i  == 4
-
-    elsif session[:sort_id].to_i  == 5  
+      out =  Question.joins(:answers, :comments, :votes).select("questions.*, count(*) as total_activity").order("total_activity DESC").group("questions.id")
+    elsif session[:sort_id].to_i  == 5
       out = Question.all.sort_by{|q|  q.votes.sum(:score)}.reverse
     else
       out = Question.all
