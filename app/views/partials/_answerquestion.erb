@@ -1,0 +1,9 @@
+<div>
+  <h1>Answer</h1>
+  <form method="POST" action="/questions/<%= @question.id %>/answers/new">
+    <textarea name="answer[content]" rows="4" cols="50" placeholder="Enter answer here..."></textarea>
+      <div>
+        <input type="submit" value="Submit">
+      </div>
+  </form>
+</div>

@@ -1,0 +1,4 @@
+
+  <% voteables.each do |voteable| %>
+    <span><%= erb(:'partials/_voteable', layout: false,  locals: {voteable: voteable}) %> </span>
+  <% end %>

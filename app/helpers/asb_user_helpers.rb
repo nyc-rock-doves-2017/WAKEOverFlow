@@ -5,7 +5,7 @@ helpers do
    @user.save!
  end
  def login
-   @user = User.find_by(email: params[:user_information][:email])
+   @user = User.find_by(username: params[:user_information][:username])
    if @user && @user.password == params[:user_information][:password]
       session[:id] = @user.id
       redirect '/'
@@ -21,6 +21,30 @@ helpers do
    if session[:id]
      @user ||= User.find(session[:id])
    end
+ end
+
+ def sorted_Qs
+   session[:sort_id] ||= 1
+
+    if session[:sort_id].to_i == 1
+      out = Question.all
+    elsif session[:sort_id].to_i  == 2
+      out = Question.order(updated_at: :desc)
+    elsif session[:sort_id].to_i  == 3
+      out = Question.order(updated_at: :asc)
+    elsif session[:sort_id].to_i  == 4
+
+    elsif session[:sort_id].to_i  == 5
+      out = Question.all.sort_by{|q|  q.votes.sum(:score)}.reverse
+    else
+      out = Question.all
+    end
+    out
+ end
+
+
+ def best_answer
+   best_answer = Answer.find_by(id: @question.best_answer_id)
  end
 
 end
