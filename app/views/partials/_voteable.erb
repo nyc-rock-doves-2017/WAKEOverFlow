@@ -5,7 +5,7 @@
     <%= voteable.content %>
   <% end %>
 </span>
-<span> <%= voteable.votes.sum(:score)%></span>
+<span name="score"> <%= voteable.votes.sum(:score)%></span>
 <% if logged_in? %>
   <span>
     <form action="/<%= voteable.type_of %>/<%= voteable.id %>/vote/new" method="post">
