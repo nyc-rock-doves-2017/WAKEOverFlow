@@ -11,6 +11,13 @@ post '/questions/:id/vote/new' do
   redirect "/questions/#{question.id}"
 end
 
+post '/questions/:id/comments/new' do
+  find_user
+  @question = Question.find_by(id: params[:id])
+  comment = Comment.create(user: @user, commentable: @question, content: params[:content])
+  redirect "/questions/#{@question.id}"
+end
+
 get '/questions/:id/edit' do
   @question = Question.find_by(id: params[:id])
   erb :'question/edit'

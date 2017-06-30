@@ -11,6 +11,13 @@ post '/answers/:id/vote/new' do
   redirect "/questions/#{answer.question.id}"
 end
 
+post '/answers/:id/comments/new' do
+  find_user
+  @answer = Answer.find_by(id: params[:id])
+  comment = Comment.create(user: @user, commentable: @answer, content: params[:content])
+  redirect "/questions/#{@answer.question.id}"
+end
+
 get 'questions/:id/answers/new' do
   @question = Question.find_by(id: params[:id])
   @answer = Answer.new

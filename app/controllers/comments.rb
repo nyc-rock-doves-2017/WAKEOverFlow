@@ -8,6 +8,7 @@ post '/comments/:id/vote/new' do
   else
     redirect "/questions/#{comment.commentable.question.id}"
   end
+end
 
 get '/comments' do
   @comments = Comment.all
@@ -21,7 +22,7 @@ end
 
 post '/questions/:id/comments' do
   user = User.find_by(id:7)
-  @new_comment = Comment.new(user: user, content:params[:content])
+  @new_comment = Comment.new(user: user, content:params[:content], )
   if @new_comment.save
     redirect "/questions/#{params[:id]}"
   else
