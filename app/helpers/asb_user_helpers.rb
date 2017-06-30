@@ -33,10 +33,7 @@ helpers do
     elsif session[:sort_id].to_i  == 3
       out = Question.order(updated_at: :asc)
     elsif session[:sort_id].to_i  == 4
-      out = Question.all.sort_by do |q|
-         time_stamps = []
-         q.votes.each{|v| v.updated_at}
-       end
+
     elsif session[:sort_id].to_i  == 5
       out = Question.all.sort_by{|q|  q.votes.sum(:score)}.reverse
     else
