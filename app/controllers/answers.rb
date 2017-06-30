@@ -1,8 +1,3 @@
-# get 'questions/:id/answers' do
-#   @voteables = Answer.all
-#   erb :'voteables/index'
-# end
-
 post '/answers/:id/vote/new' do
   answer = Answer.find_by(id: params[:id])
   find_user

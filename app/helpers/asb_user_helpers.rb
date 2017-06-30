@@ -4,6 +4,7 @@ helpers do
    @user.password = params[:user_information][:password]
    @user.save!
  end
+
  def login
    @user = User.find_by(username: params[:user_information][:username])
    if @user && @user.password == params[:user_information][:password]
@@ -14,9 +15,11 @@ helpers do
       redirect '/sessions/new'
     end
  end
+
  def logged_in?
    !!@user
  end
+
  def find_user
    if session[:id]
      @user ||= User.find(session[:id])
@@ -34,7 +37,7 @@ helpers do
       out = Question.order(updated_at: :asc)
     elsif session[:sort_id].to_i  == 4
 
-    elsif session[:sort_id].to_i  == 5
+    elsif session[:sort_id].to_i  == 5  
       out = Question.all.sort_by{|q|  q.votes.sum(:score)}.reverse
     else
       out = Question.all

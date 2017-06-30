@@ -20,6 +20,8 @@
       <div><%= erb(:'partials/_commentables', layout: false,  locals: {commentables: answer.comments}) %></div>
   <% end %>
 </div>
-<div>
-  <%= erb(:'partials/_answerquestion', layout: false, locals: {question: @question}) %>
-</div>
+<% if logged_in? %>
+  <div>
+    <%= erb(:'partials/_answerquestion', layout: false, locals: {question: @question}) %>
+  </div>
+<% end %>
