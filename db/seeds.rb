@@ -10,12 +10,14 @@ end
 end
 
 40.times do
+
   answers = Answer.create!( content: ("A:" + Faker::HarryPotter.location),
                             user: User.all.sample,
                             question: Question.all.sample)
 end
 
 80.times do
+
   comment = Comment.new( content: ("C:" + Faker::ChuckNorris.fact),
                           user: User.all.sample)
 
