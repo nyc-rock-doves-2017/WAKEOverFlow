@@ -3,9 +3,9 @@
     <li>
       <form action="/<%= type %>/<%= editable.id %>" method="post">
         <input type="hidden" name="_method" value="delete" />
-        <input type="submit" value="delete">
+        <input type="submit" value="delete" class="btn-floating btn waves-effect waves-light red material-icons">
       </form>
   </li>
-  <li> <a href="/<%= type %>/<%= editable.id %>/edit">edit</a>
+  <li> <a href="/<%= type %>/<%= editable.id %>/edit" class="btn-floating btn waves-effect waves-light red material-icons"> <i class="material-icons">mode_edit</i></a>
   </ul>
 <div>
