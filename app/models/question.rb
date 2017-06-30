@@ -9,6 +9,7 @@ class Question < ApplicationRecord
 
 
   def content_url
+    # binding.pry
     <<-url
       <a href="/questions/#{self.id}"> #{self.content} </a>
     url
