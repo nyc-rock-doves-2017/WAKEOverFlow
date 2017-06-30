@@ -15,15 +15,17 @@ get '/comments' do
 end
 
 get '/comments/new' do
+  @new_comment = Comment.new
   erb :'/comments/new'
 end
 
 post '/comments' do
-@comment = Comment.new(params[:comment])
-  if @comment.save
+  user = User.find_by(id:7)
+  @new_comment = Comment.new(user: user, content:params[:content])
+  if @new_comment.save
     redirect '/comments'
   else
-    @comment.errors.full_messages
+   @errors = @new_comment.errors.full_messages
     erb :'comments/new'
   end
 end
