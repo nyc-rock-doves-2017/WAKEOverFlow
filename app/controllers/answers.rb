@@ -1,14 +1,16 @@
-# get 'questions/:id/answers' do
-#   @voteables = Answer.all
-#   erb :'voteables/index'
-# end
-
 post '/answers/:id/vote/new' do
   answer = Answer.find_by(id: params[:id])
   find_user
   score = (Vote.where(user: @user, voteable: answer).sum(:score))+params[:score].to_i
   score <= 1 && score >= -1 ? (vote = Vote.create(voteable: answer, user: @user, score: params[:score])) : ()
   redirect "/questions/#{answer.question.id}"
+end
+
+post '/answers/:id/comments/new' do
+  find_user
+  @answer = Answer.find_by(id: params[:id])
+  comment = Comment.create(user: @user, commentable: @answer, content: params[:content])
+  redirect "/questions/#{@answer.question.id}"
 end
 
 get 'questions/:id/answers/new' do

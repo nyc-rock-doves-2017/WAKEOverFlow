@@ -4,6 +4,9 @@
     <%= erb(:'partials/_buttons', layout: false,  locals: {editable: @question, type: @question.type_of} ) %>
   <% end %>
     <div><%= erb(:'partials/_commentables', layout: false,  locals: {commentables: @question.comments}) %></div>
+<div>
+  <%= erb(:'partials/_comment_question', layout: false, locals: {commentable: @question}) %>
+</div>
 </div>
   <% if @best_answer %>
     <%= erb(:'partials/_best_answer', layout: false,  locals: {best_answer: @best_answer}) %>
@@ -18,6 +21,9 @@
         <%= erb(:'partials/_buttons', layout: false,  locals: {editable: answer, type: answer.type_of} ) %>
       <% end %>
       <div><%= erb(:'partials/_commentables', layout: false,  locals: {commentables: answer.comments}) %></div>
+      <div>
+  <%= erb(:'partials/_comment_question', layout: false, locals: {commentable:answer}) %>
+</div>
   <% end %>
 </div>
 <div>

@@ -4,14 +4,11 @@
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <% if logged_in? %>
         <li><a href='/users/profile'><%= @user.username%></a></li>
-        <li><a href='/logout'>Log out</a></li>
-        <li><a href='/'>Home page</a></li>
+        <li><a href='/logout'>Log Out</a></li>
       <% else %>
-        <li><a href='/sessions/new'>Log in</a></li>
-        <li><a href='/'>Home page</a></li>
+        <li><a href='/sessions/new'>Log In</a></li>
+        <li><a href='/users/new'>Sign Up</a></li>
       <% end %>
     </ul>
   </div>
 </nav>
-
-

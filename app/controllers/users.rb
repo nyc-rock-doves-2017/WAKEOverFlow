@@ -17,7 +17,6 @@ end
 
 
 get '/users/profile' do
-  session[:id] = 1
   @questions = Question.where(user_id: find_user.id)
   @answers = Answer.where(user_id: find_user.id)
   @commments = Comment.where(user_id: find_user.id)

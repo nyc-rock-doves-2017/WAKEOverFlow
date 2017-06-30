@@ -3,6 +3,13 @@ get '/comments' do
   erb :'/comments/index'
 end
 
+post '/questions/:id/comments/new' do
+  find_user
+  @question = Question.find_by(id: params[:id])
+  comment = Comment.create(user: @user, commentable: @question, content: params[:content])
+  redirect "/questions/#{@question.id}"
+end
+
 get '/comments/new' do
   @new_comment = Comment.new
   erb :'/comments/new'
@@ -50,4 +57,3 @@ post '/comments/:id/vote/new' do
     redirect "/questions/#{comment.commentable.question.id}"
   end
 end
-
