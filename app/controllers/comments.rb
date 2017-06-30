@@ -19,11 +19,11 @@ get '/comments/new' do
   erb :'/comments/new'
 end
 
-post '/comments' do
+post '/questions/:id/comments' do
   user = User.find_by(id:7)
   @new_comment = Comment.new(user: user, content:params[:content])
   if @new_comment.save
-    redirect '/comments'
+    redirect "/questions/#{params[:id]}"
   else
    @errors = @new_comment.errors.full_messages
     erb :'comments/new'
@@ -32,6 +32,7 @@ end
 
 get '/comments/:id' do
   "Displays a specific comment"
+  @comment =
   erb :'/comments/show'
 end
 
