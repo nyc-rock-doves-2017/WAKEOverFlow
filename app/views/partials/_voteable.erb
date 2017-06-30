@@ -5,16 +5,22 @@
     <%= voteable.content %>
   <% end %>
 </span>
-<span> <%= voteable.votes.sum(:score)%></span>
+<span class="score"> <%= voteable.votes.sum(:score)%></span>
 <% if logged_in? %>
-  <span>
-    <form action="/<%= voteable.type_of %>/<%= voteable.id %>/vote/new" method="post">
-      <input type="hidden" name="score" value="1" />
-      <input type="submit" value="thumb_up" class="btn-floating btn waves-effect waves-light red material-icons">
-    </form>
-    <form action="/<%= voteable.type_of %>/<%= voteable.id %>/vote/new" method="post">
-      <input type="hidden" name="score" value="-1" />
-      <input type="submit" value="thumb_down" class="btn-floating btn waves-effect waves-light red material-icons">
-    </form>
-  <span>
+  <div class="inline-buttons">
+    <ul>
+      <li class="button">
+        <form action="/<%= voteable.type_of %>/<%= voteable.id %>/vote/new" method="post">
+          <input type="hidden" name="score" value="1" />
+          <input type="submit" value="thumb_up" class="btn-floating btn waves-effect waves-light red material-icons">
+        </form>
+      </li>
+      <li class="button">
+        <form action="/<%= voteable.type_of %>/<%= voteable.id %>/vote/new" method="post">
+          <input type="hidden" name="score" value="-1" />
+          <input type="submit" value="thumb_down" class="btn-floating btn waves-effect waves-light red material-icons">
+        </form>
+      </li>
+    </ul>
+  </div>
 <% end %>
