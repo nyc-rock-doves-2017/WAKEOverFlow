@@ -1,7 +1,5 @@
 get '/questions' do
-  # delete meeeee
-  session[:id] = 1
-  @voteables = Question.all
+  @voteables = sorted_Qs
   erb :'question/index'
 end
 
@@ -20,7 +18,8 @@ end
 
 get '/questions/:id' do
   @question = Question.find_by(id: params[:id])
-  @answers = @question.answers
+  @best_answer = Answer.find_by(id: @question.best_answer_id)
+  @answers = @question.answers.where.not(id: @question.best_answer_id)
   erb :'question/show'
 end
 
@@ -33,7 +32,10 @@ end
 
 put '/questions/:id' do
   question = Question.find_by(id: params[:id])
-  question.content = params[:content]
+  if params[:content]
+    question.content = params[:content]
+  end
+  question.best_answer_id = params[:select_best_id]
   question.save
   redirect "/questions/#{question.id}"
 end

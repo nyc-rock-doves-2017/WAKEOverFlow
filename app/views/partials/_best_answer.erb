@@ -1,0 +1,7 @@
+<div>
+  <h2>Best Answer<%= erb(:'partials/_voteable', layout: false,  locals: {voteable: best_answer}) %></h2>
+    <% if mine?(best_answer) %>
+      <%= erb(:'partials/_buttons', layout: false,  locals: {editable: best_answer, type: best_answer.type_of} ) %>
+    <% end %>
+  <div><%= erb(:'partials/_commentables', layout: false,  locals: {commentables: best_answer.comments}) %></div>
+</div>

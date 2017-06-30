@@ -1,0 +1,33 @@
+<nav>
+  <span> Sort by: </span>
+    <ul>
+      <li>
+        <form action="/session/sortby" method="post">
+          <input type="hidden" name="_method" value="put" />
+          <input type="submit" value="Date oldest to newest">
+          <input type="hidden" name="sort_id" value="2">
+        </form>
+      </li>
+      <li>
+        <form action="/session/sortby" method="post">
+          <input type="hidden" name="_method" value="put" />
+          <input type="submit" value="Date newest to oldest">
+          <input type="hidden" name="sort_id" value="3">
+        </form>
+      </li>
+      <li>
+        <form action="/session/sortby" method="post">
+          <input type="hidden" name="_method" value="put" />
+          <input type="submit" value="Trending">
+          <input type="hidden" name="sort_id" value="4">
+        </form>
+      </li>
+      <li>
+        <form action="/session/sortby" method="post">
+          <input type="hidden" name="_method" value="put" />
+          <input type="submit" value="Highest voted">
+          <input type="hidden" name="sort_id" value="5">
+        </form>
+      </li>
+    </ul>
+</nav>
