@@ -13,17 +13,6 @@ post '/answers/:id/comments/new' do
   redirect "/questions/#{@answer.question.id}"
 end
 
-get 'questions/:id/answers/new' do
-  @question = Question.find_by(id: params[:id])
-  @answer = Answer.new
-  erb :'voteable/answers/new'
-end
-
-post '/questions/:id/answers/new' do
-  answer = Answer.create(user_id: session[:id], question_id: params[:id], content: params[:answer][:content])
-  redirect "/questions/#{params[:id]}"
-end
-
 get '/answers/:id/edit' do
   @answer = Answer.find_by(id: params[:id])
   erb :'answers/edit'

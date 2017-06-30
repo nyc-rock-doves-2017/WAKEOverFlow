@@ -5,7 +5,9 @@
   <% end %>
     <div><%= erb(:'partials/_commentables', layout: false,  locals: {commentables: @question.comments}) %></div>
 <div>
+    <% if logged_in? %>
   <%= erb(:'partials/_comment_question', layout: false, locals: {commentable: @question}) %>
+    <% end %>
 </div>
 </div>
   <% if @best_answer %>
@@ -22,7 +24,9 @@
       <% end %>
       <div><%= erb(:'partials/_commentables', layout: false,  locals: {commentables: answer.comments}) %></div>
       <div>
+<% if logged_in? %>
   <%= erb(:'partials/_comment_question', layout: false, locals: {commentable:answer}) %>
+    <% end %>
 </div>
   <% end %>
 </div>
