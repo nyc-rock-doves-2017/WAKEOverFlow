@@ -5,9 +5,15 @@
   <% end %>
     <div><%= erb(:'partials/_commentables', layout: false,  locals: {commentables: @question.comments}) %></div>
 </div>
+  <% if @best_answer %>
+    <%= erb(:'partials/_best_answer', layout: false,  locals: {best_answer: @best_answer}) %>
+  <% end %>
 <div>
   <% @answers.each do |answer| %>
       <h2><%= erb(:'partials/_voteable', layout: false,  locals: {voteable: answer}) %></h2>
+      <% if mine?(@question) %>
+        <%= erb(:'partials/_select_best', layout: false, locals: {answer: answer}) %>
+      <% end %>
       <% if mine?(answer) %>
         <%= erb(:'partials/_buttons', layout: false,  locals: {editable: answer, type: answer.type_of} ) %>
       <% end %>

@@ -1,0 +1,14 @@
+<ul>
+  <% @voteables.each do |voteable| %>
+    <li><span><a href="/questions/<%= voteable.id %>"><%= erb(:'partials/_voteable', layout: false,  locals: {voteable: voteable}) %></a></span>
+      <% if mine?(voteable) %>
+        <%= erb(:'partials/_buttons', layout: false,  locals: {editable: voteable} ) %>
+      <% end %>
+    </li>
+
+  <% end %>
+</ul>
+
+<% if logged_in? %>
+  <%= erb(:'partials/_new_comment_form') %>
+<% end %>

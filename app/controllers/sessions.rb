@@ -12,3 +12,8 @@ get '/logout' do
   session.clear
   redirect '/sessions/new'
 end
+
+put '/session/sortby' do
+  session[:sort_id] = params[:sort_id]
+  redirect '/questions'
+end

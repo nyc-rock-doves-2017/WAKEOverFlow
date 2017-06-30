@@ -1,3 +1,4 @@
+<%= erb(:'partials/_sort_by_bar', layout: false) %>
 <ul>
   <% @voteables.each do |voteable| %>
     <li><span><%= erb(:'partials/_voteable', layout: false,  locals: {voteable: voteable}) %></span>
@@ -5,10 +6,8 @@
         <%= erb(:'partials/_buttons', layout: false,  locals: {editable: voteable, type: voteable.type_of} ) %>
       <% end %>
     </li>
-
   <% end %>
 </ul>
-
 <% if logged_in? %>
   <%= erb(:'partials/_new_comment_form') %>
 <% end %>
