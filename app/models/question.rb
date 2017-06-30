@@ -10,7 +10,7 @@ class Question < ApplicationRecord
 
   def content_url
     <<-url
-      <a href="/questions/#{self.id}"> #{self.content} </a>
+      <a href="/questions/#{self.id}" class="question-link"> #{self.content} </a>
     url
   end
 end

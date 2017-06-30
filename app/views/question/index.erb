@@ -1,5 +1,11 @@
 <%= erb(:'partials/_sort_by_bar', layout: false) %>
 <div>
+  <% if logged_in? %>
+    <%= erb(:'partials/_new_question_form') %>
+  <% end %>
+</div>
+<div>
+  <h5>Browse Questions</h5>
   <ul id="main">
     <% @voteables.each do |voteable| %>
       <li><span><%= erb(:'partials/_voteable', layout: false,  locals: {voteable: voteable}) %></span>
@@ -9,9 +15,4 @@
       </li>
     <% end %>
   </ul>
-</div>
-<div>
-  <% if logged_in? %>
-    <%= erb(:'partials/_new_question_form') %>
-  <% end %>
 </div>

@@ -7,5 +7,31 @@
   padding: 10px;
 }
 
-.vote-button {
-display: inline-block;}
+.button {
+  display: inline-block;
+}
+
+.inline-buttons {
+  display: inline-block;
+}
+
+.question-link {
+  font-size: 30px;
+}
+
+.score {
+  font-size: 25px;
+  padding-right: 15px;
+}
+
+#main {
+  padding-left: 50px;
+}
+
+form {
+  padding-bottom: 30px;
+}
+
+label {
+  font-size: 20px;
+}
