@@ -3,3 +3,9 @@
   <input type="textarea" name="content" value=""><br>
   <input type="submit" value="Enter Comment">
 </form>
+
+<% if @errors %>
+  <% @errors.each do |e| %>
+  <%= e %>
+  <% end %>
+<% end %>
