@@ -19,12 +19,12 @@ get '/comments/new' do
 end
 
 post '/comments' do
-  # @comment = Comment.new(params[:comment])
-  #   if @comment.save
-  #   redirect '/comments'
-  #   else
-  #     puts "Please enter a legitimate comment"
-  #   end
+  @comment = Comment.new(params[:comment])
+    if @comment.save
+    redirect '/comments'
+    else
+      puts "Please enter a legitimate comment"
+    end
 end
 
 get '/comments/:id' do
