@@ -1,3 +1,14 @@
+get 'questions/:id/answers/new' do
+  @question = Question.find_by(id: params[:id])
+  @answer = Answer.new
+  erb :'voteable/answers/new'
+end
+
+post '/questions/:id/answers/new' do
+  answer = Answer.create(user_id: session[:id], question_id: params[:id], content: params[:answer][:content])
+  redirect "/questions/#{params[:id]}"
+end
+
 get '/questions' do
   @voteables = sorted_Qs
   erb :'question/index'
@@ -8,6 +19,21 @@ post '/questions/:id/vote/new' do
   find_user
   score = (Vote.where(user: @user, voteable: question).sum(:score))+params[:score].to_i
   score <= 1 && score >= -1 ? (Vote.create(voteable: question, user: @user, score: params[:score])) : ()
+  redirect "/questions/#{question.id}"
+end
+
+
+post '/answers/:id/comment/new' do
+  find_user
+  answer = Answer.find(params[:id])
+  comment = Comment.create(user: @user, commentable: answer, content: params[:content])
+  redirect "/questions/#{answer.question.id}"
+end
+
+post '/questions/:id/comment/new' do
+  find_user
+  question = Question.find(params[:id])
+  comment = Comment.create(user: @user, commentable: question, content: params[:content])
   redirect "/questions/#{question.id}"
 end
 
