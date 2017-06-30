@@ -4,15 +4,17 @@
     <%= erb(:'partials/_buttons', layout: false,  locals: {editable: @question, type: @question.type_of} ) %>
   <% end %>
     <div><%= erb(:'partials/_commentables', layout: false,  locals: {commentables: @question.comments}) %></div>
+</div>
 <div>
     <% if logged_in? %>
   <%= erb(:'partials/_comment_question', layout: false, locals: {commentable: @question}) %>
     <% end %>
 </div>
-</div>
+<div>
   <% if @best_answer %>
     <%= erb(:'partials/_best_answer', layout: false,  locals: {best_answer: @best_answer}) %>
   <% end %>
+</div>
 <div>
   <% @answers.each do |answer| %>
       <h2><%= erb(:'partials/_voteable', layout: false,  locals: {voteable: answer}) %></h2>
@@ -23,11 +25,11 @@
         <%= erb(:'partials/_buttons', layout: false,  locals: {editable: answer, type: answer.type_of} ) %>
       <% end %>
       <div><%= erb(:'partials/_commentables', layout: false,  locals: {commentables: answer.comments}) %></div>
-      <div>
-<% if logged_in? %>
-  <%= erb(:'partials/_comment_question', layout: false, locals: {commentable:answer}) %>
+    <div>
+    <% if logged_in? %>
+      <%= erb(:'partials/_comment_question', layout: false, locals: {commentable:answer}) %>
     <% end %>
-</div>
+  </div>
   <% end %>
 </div>
 <div>

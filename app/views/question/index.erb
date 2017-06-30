@@ -1,9 +1,9 @@
-<%= erb(:'partials/_sort_by_bar', layout: false) %>
 <div>
   <% if logged_in? %>
     <%= erb(:'partials/_new_question_form') %>
   <% end %>
 </div>
+<%= erb(:'partials/_sort_by_bar', layout: false) %>
 <div>
   <h5>Browse Questions</h5>
   <ul id="main">
