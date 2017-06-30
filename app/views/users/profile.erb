@@ -10,7 +10,7 @@
 <div>Your answers activity:</div>
 
 <% @answers.each do |answer| %>
-  <div><a href="/answers/<%= answer.id %>">
+  <div><a href="/questions/<%= answer.question.id %>">
   <%= erb(:'partials/_voteable', layout: false,  locals: {voteable: answer}) %>
   </a></div>
 <% end %>
@@ -18,7 +18,7 @@
 <div>Your comments activity:</div>
 
 <% @commments.each do |commment| %>
-  <div><a href="/comments/<%= commment.id %>">
+  <div><a href="/questions/<%= comment.question.id %>">
   <%= erb(:'partials/_voteable', layout: false,  locals: {voteable: commment}) %>
   </a></div>
 <% end %>
