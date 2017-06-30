@@ -5,7 +5,7 @@
     <%= voteable.content %>
   <% end %>
 </span>
-<span class="score"> <%= voteable.votes.sum(:score)%></span>
+<span class="score" name="score"> <%= voteable.votes.sum(:score)%></span>
 <% if logged_in? %>
   <div class="inline-buttons">
     <ul>
