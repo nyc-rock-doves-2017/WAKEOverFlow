@@ -5,18 +5,20 @@
 end
 
 20.times do
-  questions = Question.create!( content: "question",
+  questions = Question.create!( content: ("Q:" + Faker::Cat.breed),
                                 user: User.all.sample)
 end
 
 40.times do
-  answers = Answer.create!( content: "answer" * 50,
+
+  answers = Answer.create!( content: ("A:" + Faker::HarryPotter.location),
                             user: User.all.sample,
                             question: Question.all.sample)
 end
 
 80.times do
-  comment = Comment.new( content: "comment",
+
+  comment = Comment.new( content: ("C:" + Faker::ChuckNorris.fact),
                           user: User.all.sample)
 
   if rand(1..6) <= 3

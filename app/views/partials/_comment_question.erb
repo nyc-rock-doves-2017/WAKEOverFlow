@@ -1,4 +1,5 @@
-<form action="/questions/params[:id]" method="post">
+<form action="/<%= commentable.type_of %>/<%= commentable.id %>/comments/new" method="post">
+  Enter Comment Here:<br>
   <input type="textarea" name="content" value=""><br>
   <input type="submit" value="Enter Comment">
 </form>
