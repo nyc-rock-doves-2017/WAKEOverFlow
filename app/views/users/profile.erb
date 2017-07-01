@@ -18,7 +18,7 @@
 <div>Your comments activity:</div>
 
 <% @comments.each do |comment| %>
-  <div><a href="/questions/<%= comment.question.id %>">
+  <div><a href="/questions/<%= comment.commentable.id %>">
   <%= erb(:'partials/_voteable', layout: false,  locals: {voteable: comment}) %>
   </a></div>
 <% end %>
