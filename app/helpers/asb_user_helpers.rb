@@ -21,8 +21,6 @@ helpers do
  end
 
  def find_user
-   p "^"*100
-   p session
    if session[:id]
      @user ||= User.find(session[:id])
    end

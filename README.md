@@ -20,4 +20,6 @@
   * Can create comments on any question or answer throughout application
   * Can create an answer to any question
   * The user can upvote or downvote any question, answer, or comment throughout the application (only once per question, answer or comment)
-  
+
+## Additional Resources
+* Pages are rendered using Materialize CSS: http://materializecss.com/
