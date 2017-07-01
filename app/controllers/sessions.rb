@@ -9,7 +9,7 @@ end
 
 
 get '/logout' do
-  session.clear
+  session[:id] = nil
   redirect '/sessions/new'
 end
 

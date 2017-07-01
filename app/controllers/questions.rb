@@ -47,6 +47,8 @@ get '/questions/:id/edit' do
 end
 
 get '/questions/:id' do
+  p "*"*100
+  p params
   @question = Question.find_by(id: params[:id])
   @best_answer = Answer.find_by(id: @question.best_answer_id)
   @answers = @question.answers.where.not(id: @question.best_answer_id)
