@@ -2,7 +2,7 @@
   <form action='/questions/<%= @question.id %>' method='post' >
     <input type="hidden" name="_method" value="PUT" />
     <label>Edit Question</lablel>
-    <input type="text" name="content" >
+    <input type="text" name="content" value= <%= @question.content %>>
     <input type="submit" value="Edit">
   </form>
 <div>
